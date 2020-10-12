@@ -50,13 +50,16 @@ spec:
     app: apm-server
   type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apm-server
 spec:
   # this replicas value is default
   # modify it according to your case
+  selector:
+    matchLabels:
+      app: apm-server
   replicas: 1
   template:
     metadata:
